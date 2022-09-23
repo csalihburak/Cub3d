@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   preimg3.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agunes <agunes@student.42.fr>              +#+  +:+       +#+        */
+/*   By: scoskun <scoskun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 17:35:31 by agunes            #+#    #+#             */
-/*   Updated: 2022/09/23 15:08:54 by agunes           ###   ########.fr       */
+/*   Updated: 2022/09/23 18:00:02 by scoskun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	hexcolor(int r, int g, int b)
 {
-	return ((r << 16) | (g << 8) | b);
+	return ((r * 65536) + (256 * g) + b);
 }
 
 void	freeprefc(t_cub3d *cub3d, char **buff, int i)

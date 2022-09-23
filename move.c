@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agunes <agunes@student.42.fr>              +#+  +:+       +#+        */
+/*   By: scoskun <scoskun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 15:11:17 by scoskun           #+#    #+#             */
-/*   Updated: 2022/09/23 15:09:09 by agunes           ###   ########.fr       */
+/*   Updated: 2022/09/23 19:17:38 by scoskun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,12 @@ void	move_norm(int key, t_cub3d *data)
 
 int	move(int key, t_cub3d *data)
 {
+	int	a;
+	int	b;
+	int i;
+	int j;
+
+	i = 0;
 	if (key == 53)
 		exit(1);
 	move_norm(key, data);
@@ -91,5 +97,7 @@ int	move(int key, t_cub3d *data)
 	print_roof(data);
 	print_ground(data);
 	print_img(data, data->img_s);
+	mlx_mouse_get_pos(data->win, &a, &b);
+	mlx_put_image_to_window(data->mlx, data->win, data->aim, a, b);
 	return (0);
 }

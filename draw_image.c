@@ -6,7 +6,7 @@
 /*   By: scoskun <scoskun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 16:56:46 by scoskun           #+#    #+#             */
-/*   Updated: 2022/09/23 15:57:22 by scoskun          ###   ########.fr       */
+/*   Updated: 2022/09/23 18:11:07 by scoskun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	print_roof(t_cub3d *data)
 		y = 0;
 		while (y < data->height / 2)
 		{
-			data->screen_img_data[y * data->witdh + x] = data->img_s->ceilling;
+			data->screen_img_data[y * data->witdh + x] = 0xBBD1E6;
 			y++;
 		}
 		x++;
@@ -39,7 +39,7 @@ void	print_ground(t_cub3d *data)
 	y = data->height / 2;
 	while (x < data->witdh && y < data->height)
 	{
-		data->screen_img_data[y * data->witdh + x] = data->img_s->floor;
+		data->screen_img_data[y * data->witdh + x] = 0x212F3D;
 		x++;
 		if (x == data->witdh)
 		{
