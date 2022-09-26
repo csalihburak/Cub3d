@@ -6,7 +6,7 @@
 /*   By: scoskun <scoskun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 17:23:47 by agunes            #+#    #+#             */
-/*   Updated: 2022/09/23 18:57:18 by scoskun          ###   ########.fr       */
+/*   Updated: 2022/09/26 14:54:35 by scoskun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,4 +120,5 @@ void	print_ground(t_cub3d *data);
 void	mini_map(t_cub3d *data, t_img *map);
 void	get_pos(t_cub3d *data);
 void	set_values(t_cub3d *data, t_img *map);
+void	mini_map(t_cub3d *data, t_img *map);
 #endif
