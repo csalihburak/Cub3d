@@ -6,7 +6,7 @@
 /*   By: scoskun <scoskun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 17:23:47 by agunes            #+#    #+#             */
-/*   Updated: 2022/09/26 14:54:35 by scoskun          ###   ########.fr       */
+/*   Updated: 2022/09/28 13:41:05 by scoskun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,12 @@ typedef struct s_img
 {
 	int		alen;
 	int		blen;
-	char	**cub;
-	char	*map;
 	int		floor;
 	int		ceilling;
 	void	*so;
 	void	*ea;
 	void	*no;
 	void	*we;
-	int		*ea_data;
-	int		*no_data;
-	int		*we_data;
-	int		*so_data;
 	void	*p;
 	double	camx;
 	double	raydirx;
@@ -50,7 +44,13 @@ typedef struct s_img
 	double	wallx;
 	double	pixel_cal;
 	double	pixel_nbr;
+	char	**cub;
+	char	*map;
 	int		**wmap;
+	int		*ea_data;
+	int		*no_data;
+	int		*we_data;
+	int		*so_data;
 	int		mx;
 	int		my;
 	int		colour;
@@ -84,6 +84,8 @@ typedef struct s_cub3d
 	double			rotate_speed;
 	double			old;
 	double			old2;
+	int				alen;
+	int				blen;
 	int				*img_data;
 	int				*img_data2;
 	int				img_width;
@@ -111,14 +113,15 @@ int		mlx_start(t_cub3d *cub3d);
 int		preimg(t_cub3d *cub3d);
 int		move(int key, t_cub3d *data);
 int		aim(int key, t_cub3d *data);
+int		move_norm(int key, t_cub3d *data);
 void	jumpspace(t_cub3d *cub3d);
 void	freeprefc(t_cub3d *cub3d, char **buff, int i);
 void	draw_image(t_cub3d*data, t_img *map, int i);
 void	print_img(t_cub3d *data, t_img *map);
 void	print_roof(t_cub3d *data);
 void	print_ground(t_cub3d *data);
-void	mini_map(t_cub3d *data, t_img *map);
 void	get_pos(t_cub3d *data);
 void	set_values(t_cub3d *data, t_img *map);
-void	mini_map(t_cub3d *data, t_img *map);
+void	mini_map(t_cub3d *data);
+void	get_map_size(t_cub3d *data, t_img *map);
 #endif

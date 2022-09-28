@@ -1,4 +1,4 @@
-NAME = cub3d
+NAME = cub3D
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -L./mlx -lmlx -framework AppKit -framework OpenGL -g
 SRCS = main.c \

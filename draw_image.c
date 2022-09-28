@@ -6,61 +6,53 @@
 /*   By: scoskun <scoskun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 16:56:46 by scoskun           #+#    #+#             */
-/*   Updated: 2022/09/26 18:39:51 by scoskun          ###   ########.fr       */
+/*   Updated: 2022/09/28 13:56:10 by scoskun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-//28 800
 
-void	mini_map(t_cub3d *data, t_img *map)
+void	norm_mini_map(t_cub3d *data, int px, int py, int i)
+{
+	while (data->img_s->map[++i])
+	{
+		if (data->img_s->map[i] == '1')
+		{
+			mlx_pixel_put(data->mlx, data->win, px, py, 0xFE0021);
+			mlx_pixel_put(data->mlx, data->win, px + 1, py, 0xFE0021);
+			mlx_pixel_put(data->mlx, data->win, px, py, 0xFE0021);
+			px += 4;
+		}
+		else if (data->img_s->map[i] == '\n')
+		{
+			px = 0;
+			py += 6;
+		}
+		else if (data->img_s->map[i] == 'N' || data->img_s->map[i] == 'S' || \
+		data->img_s->map[i] == 'W' || data->img_s->map[i] == 'E')
+		{
+			mlx_pixel_put(data->mlx, data->win, px + 3, py, 0xFE324);
+			px += 4;
+		}
+		else if (data->img_s->map[i] == '0')
+			px += 4;
+	}
+}
+
+void	mini_map(t_cub3d *data)
 {
 	void	*mmap;
 	int		*dat;
 	int		i;
-	int		j;
-	int		k;
-	int 	px;
-	int		py;
-	
-	i = 0;
-	j = 0;
-	k = 0;
-	px = 0;
-	py = 0;
-	map->alen = 1;
-	mmap = mlx_new_image(data->mlx, 75, 150);
-	dat = (int *)mlx_get_data_addr(mmap, &data->bit_per_px, &data->size_line, &data->endian);
-	while(i < (75 * 150))
-	{
-		dat[i] = 0x2C3E50;
-		i++;
-	}
-	i = 0;
+
+	i = -1;
+	mmap = mlx_new_image(data->mlx, data->alen, data->blen + 1);
+	dat = (int *)mlx_get_data_addr(mmap, &data->bit_per_px, \
+	&data->size_line, &data->endian);
+	while (++i < (data->alen * data->blen))
+		dat[i] = 3546757;
 	mlx_put_image_to_window(data->mlx, data->win, mmap, 0, 0);
-	while(map->map[i])
-	{
-		if (map->map[i] == '1')
-		{
-			mlx_pixel_put(data->mlx, data->win,  px + 5 , py + 5, 0xFE0000);
-/* 			mlx_pixel_put(data->mlx, data->win,  px , py + 1, 255);
-			mlx_pixel_put(data->mlx, data->win,  px + 1 , py + 1, 255); */
-			px++;
-		}
-		else if (map->map[i] == '\n')
-		{
-			px = 0;
-			py += 5;
-		}
-		else if (map->map[i] == 'N')
-		{
-			mlx_pixel_put(data->mlx, data->win,  px + 10, py + 5, 121425);
-			px++;
-		}
-		else if (map->map[i] == '0')
-			px += 1;
-		i++;
-	}
+	norm_mini_map(data, 0, 0, -1);
 }
 
 void	print_roof(t_cub3d *data)
@@ -74,7 +66,7 @@ void	print_roof(t_cub3d *data)
 		y = 0;
 		while (y < data->height / 2)
 		{
-			data->screen_img_data[y * data->witdh + x] = 0xBBD1E6;
+			data->screen_img_data[y * data->witdh + x] = data->img_s->floor;
 			y++;
 		}
 		x++;
@@ -90,7 +82,7 @@ void	print_ground(t_cub3d *data)
 	y = data->height / 2;
 	while (x < data->witdh && y < data->height)
 	{
-		data->screen_img_data[y * data->witdh + x] = 0x212F3D;
+		data->screen_img_data[y * data->witdh + x] = data->img_s->ceilling;
 		x++;
 		if (x == data->witdh)
 		{

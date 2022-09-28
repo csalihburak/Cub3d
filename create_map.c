@@ -6,7 +6,7 @@
 /*   By: scoskun <scoskun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 14:47:59 by scoskun           #+#    #+#             */
-/*   Updated: 2022/09/26 18:38:30 by scoskun          ###   ########.fr       */
+/*   Updated: 2022/09/28 16:30:12 by scoskun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,4 +127,5 @@ void	print_img(t_cub3d *data, t_img *map)
 		i++;
 	}
 	mlx_put_image_to_window(data->mlx, data->win, data->screen_img, 0, 0);
+	mini_map(data);
 }
