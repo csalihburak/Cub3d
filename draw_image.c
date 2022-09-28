@@ -6,7 +6,7 @@
 /*   By: scoskun <scoskun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 16:56:46 by scoskun           #+#    #+#             */
-/*   Updated: 2022/09/28 13:56:10 by scoskun          ###   ########.fr       */
+/*   Updated: 2022/09/28 19:45:58 by scoskun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	norm_mini_map(t_cub3d *data, int px, int py, int i)
 		else if (data->img_s->map[i] == 'N' || data->img_s->map[i] == 'S' || \
 		data->img_s->map[i] == 'W' || data->img_s->map[i] == 'E')
 		{
-			mlx_pixel_put(data->mlx, data->win, px + 3, py, 0xFE324);
+			mlx_pixel_put(data->mlx, data->win, data->px + 10, data->py + 10, 0xFE324);
 			px += 4;
 		}
 		else if (data->img_s->map[i] == '0')
