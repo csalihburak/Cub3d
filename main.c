@@ -63,10 +63,10 @@ void	set_values(t_cub3d *data, t_img *map)
 		data->rx = -1;
 	data->viewx = 0;
 	data->viewy = 0.66;
-	data->move_speed = 0.9;
-	data->rotate_speed = 0.09;
-	data->witdh = 1080;
-	data->height = 1080;
+	data->move_speed = 0.09;
+	data->rotate_speed = 0.03;
+	data->witdh = 2000;
+	data->height = 1300;
 	data->img_width = 64;
 	data->img_height = 64;
 	map->next_idx = 0;

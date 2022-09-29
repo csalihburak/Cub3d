@@ -6,7 +6,7 @@
 /*   By: scoskun <scoskun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 16:56:46 by scoskun           #+#    #+#             */
-/*   Updated: 2022/09/28 19:45:58 by scoskun          ###   ########.fr       */
+/*   Updated: 2022/09/29 19:54:20 by scoskun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ void	norm_mini_map(t_cub3d *data, int px, int py, int i)
 		else if (data->img_s->map[i] == 'N' || data->img_s->map[i] == 'S' || \
 		data->img_s->map[i] == 'W' || data->img_s->map[i] == 'E')
 		{
-			mlx_pixel_put(data->mlx, data->win, data->px + 10, data->py + 10, 0xFE324);
+			mlx_pixel_put(data->mlx, data->win, data->px + 100, \
+			data->py + 100, 0xFE324);
 			px += 4;
 		}
 		else if (data->img_s->map[i] == '0')
@@ -39,20 +40,24 @@ void	norm_mini_map(t_cub3d *data, int px, int py, int i)
 	}
 }
 
-void	mini_map(t_cub3d *data)
+int	mini_map(int key, t_cub3d *data)
 {
-	void	*mmap;
-	int		*dat;
-	int		i;
+	if (key == 46)
+	{
+		void	*mmap;
+		int		*dat;
+		int		i;
 
-	i = -1;
-	mmap = mlx_new_image(data->mlx, data->alen, data->blen + 1);
-	dat = (int *)mlx_get_data_addr(mmap, &data->bit_per_px, \
-	&data->size_line, &data->endian);
-	while (++i < (data->alen * data->blen))
-		dat[i] = 3546757;
-	mlx_put_image_to_window(data->mlx, data->win, mmap, 0, 0);
-	norm_mini_map(data, 0, 0, -1);
+		i = -1;
+		mmap = mlx_new_image(data->mlx, data->alen, data->blen + 1);
+		dat = (int *)mlx_get_data_addr(mmap, &data->bit_per_px, \
+		&data->size_line, &data->endian);
+		while (++i < (data->alen * data->blen))
+			dat[i] = 3546757;
+		mlx_put_image_to_window(data->mlx, data->win, mmap, 0, 0);
+		norm_mini_map(data, 0, 0, -1);
+	}
+	return (1);
 }
 
 void	print_roof(t_cub3d *data)
@@ -66,7 +71,7 @@ void	print_roof(t_cub3d *data)
 		y = 0;
 		while (y < data->height / 2)
 		{
-			data->screen_img_data[y * data->witdh + x] = data->img_s->floor;
+			data->screen_img_data[y * data->witdh + x] = 0xABB2B9;
 			y++;
 		}
 		x++;
@@ -82,7 +87,7 @@ void	print_ground(t_cub3d *data)
 	y = data->height / 2;
 	while (x < data->witdh && y < data->height)
 	{
-		data->screen_img_data[y * data->witdh + x] = data->img_s->ceilling;
+		data->screen_img_data[y * data->witdh + x] = 0x273746;
 		x++;
 		if (x == data->witdh)
 		{
@@ -109,6 +114,8 @@ void	draw_image(t_cub3d *data, t_img *map, int i)
 			map->colour = map->ea_data[data->img_height * map->my + map->mx];
 		else
 			map->colour = map->we_data[data->img_height * map->my + map->mx];
+		if(map->side == 1) 
+			map->colour = (map->colour >> 1) & 8355711;
 		data->screen_img_data[a * data->witdh + i] = map->colour;
 		a++;
 	}

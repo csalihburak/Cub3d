@@ -6,7 +6,7 @@
 /*   By: scoskun <scoskun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 15:38:26 by agunes            #+#    #+#             */
-/*   Updated: 2022/09/23 18:11:24 by scoskun          ###   ########.fr       */
+/*   Updated: 2022/09/29 16:57:55 by scoskun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ int	checkcub2(char *s)
 	int		len;
 
 	len = 0;
-	if (!ft_strncmp(s, "SO", 2) || \
-	!ft_strncmp(s, "EA", 2) || \
-	!ft_strncmp(s, "NO", 2) || \
-	!ft_strncmp(s, "WE", 2) || \
-	!ft_strncmp(s, "C", 1) || \
-	!ft_strncmp(s, "F", 1) || \
+	if (!ft_strncmp(s, "SO ", 3) || \
+	!ft_strncmp(s, "EA ", 3) || \
+	!ft_strncmp(s, "NO ", 3) || \
+	!ft_strncmp(s, "WE ", 3) || \
+	!ft_strncmp(s, "C ", 2) || \
+	!ft_strncmp(s, "F ", 2) || \
 	!ft_strncmp(s, "1", 1) || \
 	s[0] == '\0')
 		len++;

@@ -6,7 +6,7 @@
 /*   By: scoskun <scoskun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 17:23:47 by agunes            #+#    #+#             */
-/*   Updated: 2022/09/28 13:41:05 by scoskun          ###   ########.fr       */
+/*   Updated: 2022/09/29 19:53:10 by scoskun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ typedef struct s_cub3d
 	void			*screen_img;
 	void			*img2;
 	void			*aim;
+	void			*aim2;
 	double			px;
 	double			py;
 	double			rx;
@@ -100,20 +101,29 @@ typedef struct s_cub3d
 	int				height;
 	int				flag;
 	int				i;
+	int				key_w;
+	int				key_s;
+	int				key_d;
+	int				key_a;
+	int				key;
+	int				m;
 	char			orientation;
 	struct s_img	*img_s;
 }	t_cub3d;
 
+char	*merge(char **map);
+char	*deletechar(char *array, char c);
 int		setupgame(t_cub3d *cub3d);
 int		parsemap(t_cub3d *cub3d, char **argv);
-char	*merge(char **map);
 int		dbfree(char **array);
-char	*deletechar(char *array, char c);
 int		mlx_start(t_cub3d *cub3d);
 int		preimg(t_cub3d *cub3d);
+int		main_loop(t_cub3d *data);
 int		move(int key, t_cub3d *data);
 int		aim(int key, t_cub3d *data);
+int		move2(int key, t_cub3d *data);
 int		move_norm(int key, t_cub3d *data);
+int		mini_map(int key, t_cub3d *data);
 void	jumpspace(t_cub3d *cub3d);
 void	freeprefc(t_cub3d *cub3d, char **buff, int i);
 void	draw_image(t_cub3d*data, t_img *map, int i);
@@ -122,6 +132,6 @@ void	print_roof(t_cub3d *data);
 void	print_ground(t_cub3d *data);
 void	get_pos(t_cub3d *data);
 void	set_values(t_cub3d *data, t_img *map);
-void	mini_map(t_cub3d *data);
 void	get_map_size(t_cub3d *data, t_img *map);
+void	move_forward_backward(int key, t_cub3d *data);
 #endif

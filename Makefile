@@ -10,6 +10,7 @@ SRCS = main.c \
 		create_map.c	\
 		draw_image.c	\
 		move.c			\
+		move2.c			\
 
 OBJS= $(SRCS:.c=.o)
 MINI = ./mlx/libmlx.a

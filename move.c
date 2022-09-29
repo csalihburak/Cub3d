@@ -6,7 +6,7 @@
 /*   By: scoskun <scoskun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 15:11:17 by scoskun           #+#    #+#             */
-/*   Updated: 2022/09/28 13:40:40 by scoskun          ###   ########.fr       */
+/*   Updated: 2022/09/29 18:53:42 by scoskun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	move_forward_backward(int key, t_cub3d *data)
 {
-	if (key == 13)
+	key = 0;
+	if (data->key_w)
 	{
 		if (data->img_s->cub[(int)(data->px + data->rx * \
 		data->move_speed)][(int)data->py] == '0')
@@ -25,7 +26,7 @@ void	move_forward_backward(int key, t_cub3d *data)
 		data->ry * data->move_speed)] == '0')
 			data->py += data->ry * data->move_speed;
 	}
-	else if (key == 1)
+	else if (data->key_s)
 	{
 		if (data->img_s->cub[(int)(data->px - data->rx * \
 		data->move_speed)][(int)data->py] == '0')
@@ -38,65 +39,18 @@ void	move_forward_backward(int key, t_cub3d *data)
 	}
 }
 
-void	move_left(t_cub3d *data)
-{
-	data->old = data->rx;
-	data->rx = data->rx * cos(-data->rotate_speed) - data->ry * \
-	sin(-data->rotate_speed);
-	data->ry = data->old * sin(-data->rotate_speed) + data->ry * \
-	cos(-data->rotate_speed);
-	data->old2 = data->viewx;
-	data->viewx = data->viewx * cos(-data->rotate_speed) - data->viewy * \
-	sin(-data->rotate_speed);
-	data->viewy = data->old2 * sin(-data->rotate_speed) + data->viewy * \
-	cos(-data->rotate_speed);
-}
-
-void	move_right(t_cub3d *data)
-{
-	data->old = data->rx;
-	data->rx = data->rx * cos(data->rotate_speed) - \
-	data->ry * sin(data->rotate_speed);
-	data->ry = data->old * sin(data->rotate_speed) + \
-	data->ry * cos(data->rotate_speed);
-	data->old2 = data->viewx;
-	data->viewx = data->viewx * cos(data->rotate_speed) - \
-	data->viewy * sin(data->rotate_speed);
-	data->viewy = data->old2 * sin(data->rotate_speed) + \
-	data->viewy * cos(data->rotate_speed);
-}
-
-int	move_norm(int key, t_cub3d *data)
-{
-	if (key == 53)
-		exit(1);
-	if (data->orientation == 'S')
-	{
-		if (key == 0 || key == 123)
-			move_left(data);
-		else if (key == 2 || key == 124)
-			move_right(data);
-	}
-	if (data->orientation == 'N')
-	{
-		if (key == 0 || key == 123)
-			move_right(data);
-		else if (key == 2 || key == 124)
-			move_left(data);
-	}
-	return (0);
-}
-
 int	move(int key, t_cub3d *data)
 {
+	printf("%d\n", key);
 	if (key == 53)
 		exit(1);
-	if (key == 13 || key == 1)
-		move_forward_backward(key, data);
-	move_norm(key, data);
-	mlx_clear_window(data->mlx, data->win);
-	print_roof(data);
-	print_ground(data);
-	print_img(data, data->img_s);
+	if (key == 13)
+		data->key_w = 0;
+	if (key == 1)
+		data->key_s = 0;
+	if (key == 123 || key == 0)
+		data->key_a = 0;
+	if (key == 2 || key == 124)
+		data->key_d = 0;
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: scoskun <scoskun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 14:47:59 by scoskun           #+#    #+#             */
-/*   Updated: 2022/09/28 16:30:12 by scoskun          ###   ########.fr       */
+/*   Updated: 2022/09/29 19:32:26 by scoskun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,11 @@ void	hitcheck(t_img *map)
 			map->mapy += map->step_y;
 			map->side = 1;
 		}
-		if (map->mapx < 0)
+/* 		if (map->mapx < 0)
 			map->mapx = 0;
 		if (map->mapy < 0)
-			map->mapy = 0;
-		if (map->cub[map->mapx][map->mapy] != '0' \
-		&& map->cub[map->mapx][map->mapy] != 'S'\
-		&& map->cub[map->mapx][map->mapy] != 'N' \
-		&& map->cub[map->mapx][map->mapy] != 'E'\
-		&& map->cub[map->mapx][map->mapy] != 'W')
+			map->mapy = 0; */
+		if (map->cub[map->mapx][map->mapy] == '1')
 			map->hit = 1;
 	}
 }
@@ -123,9 +119,10 @@ void	print_img(t_cub3d *data, t_img *map)
 		get_dist(data, map);
 		set_image_values(data, map);
 		draw_image(data, map, i);
-		map->side = 1;
 		i++;
 	}
 	mlx_put_image_to_window(data->mlx, data->win, data->screen_img, 0, 0);
-	mini_map(data);
+	mlx_put_image_to_window(data->mlx, data->win, data->aim, 300, 600);
+	mlx_put_image_to_window(data->mlx, data->win, data->aim2, 950, 650);
+	//mini_map(data);
 }
