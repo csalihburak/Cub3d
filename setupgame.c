@@ -6,7 +6,7 @@
 /*   By: scoskun <scoskun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 21:25:53 by agunes            #+#    #+#             */
-/*   Updated: 2022/09/29 19:50:40 by scoskun          ###   ########.fr       */
+/*   Updated: 2022/09/30 18:04:55 by scoskun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ int	mlx_start(t_cub3d *cub3d)
 	cub3d->aim2 = mlx_xpm_file_to_image(cub3d->mlx, "./textures/aim.xpm", \
 	&cub3d->img_width, &cub3d->img_height);
 	dbfree(cub3d->img_s->cub);
+	cub3d->grana = mlx_xpm_file_to_image(cub3d->mlx, "./textures/chc.xpm", \
+	&cub3d->img_width, &cub3d->img_height);
 	cub3d->img_s->cub = ft_split(cub3d->img_s->map, '\n');
 	get_pos(cub3d);
 	set_values(cub3d, cub3d->img_s);

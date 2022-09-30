@@ -6,7 +6,7 @@
 /*   By: scoskun <scoskun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 14:47:59 by scoskun           #+#    #+#             */
-/*   Updated: 2022/09/29 19:32:26 by scoskun          ###   ########.fr       */
+/*   Updated: 2022/09/30 18:11:10 by scoskun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,32 @@ void	print_img(t_cub3d *data, t_img *map)
 		i++;
 	}
 	mlx_put_image_to_window(data->mlx, data->win, data->screen_img, 0, 0);
-	mlx_put_image_to_window(data->mlx, data->win, data->aim, 300, 600);
-	mlx_put_image_to_window(data->mlx, data->win, data->aim2, 950, 650);
-	//mini_map(data);
+	if (data->key_r)
+	{
+		if (!data->key_b)
+		{
+			mlx_put_image_to_window(data->mlx, data->win, data->aim2, 1090, 600);
+			mlx_put_image_to_window(data->mlx, data->win, data->grana, 50, 400);
+		}
+		else
+		{
+			mlx_put_image_to_window(data->mlx, data->win, data->grana, 1090, 600);
+				mlx_put_image_to_window(data->mlx, data->win, data->aim2, 50, 400);
+		}	
+	}
+	else
+	{
+		if (!data->key_b)
+		{
+			mlx_put_image_to_window(data->mlx, data->win, data->aim2, 950, 500);
+			mlx_put_image_to_window(data->mlx, data->win, data->aim, 300, 400);
+		}
+		else
+		{
+			mlx_put_image_to_window(data->mlx, data->win, data->aim, 300, 550);
+				mlx_put_image_to_window(data->mlx, data->win, data->aim2, 950, 600);
+		}
+
+	}
+	mini_map(data->key, data);
 }

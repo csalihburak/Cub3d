@@ -6,7 +6,7 @@
 /*   By: scoskun <scoskun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 17:23:47 by agunes            #+#    #+#             */
-/*   Updated: 2022/09/29 19:53:10 by scoskun          ###   ########.fr       */
+/*   Updated: 2022/09/30 18:03:51 by scoskun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ typedef struct s_cub3d
 	void			*img2;
 	void			*aim;
 	void			*aim2;
+	void			*new;
+	void			*grana;
 	double			px;
 	double			py;
 	double			rx;
@@ -89,6 +91,7 @@ typedef struct s_cub3d
 	int				blen;
 	int				*img_data;
 	int				*img_data2;
+	int				*new_da;
 	int				img_width;
 	int				img_height;
 	int				*screen_img_data;
@@ -105,8 +108,12 @@ typedef struct s_cub3d
 	int				key_s;
 	int				key_d;
 	int				key_a;
+	int				key_b;
+	int				key_r;
 	int				key;
 	int				m;
+	int				flag1;
+	char			*map_name;
 	char			orientation;
 	struct s_img	*img_s;
 }	t_cub3d;

@@ -6,7 +6,7 @@
 /*   By: scoskun <scoskun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 16:49:34 by scoskun           #+#    #+#             */
-/*   Updated: 2022/09/29 19:56:15 by scoskun          ###   ########.fr       */
+/*   Updated: 2022/09/30 18:07:07 by scoskun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,10 @@ int	main_loop(t_cub3d *data)
 	print_roof(data);
 	print_ground(data);
 	print_img(data, data->img_s);
+	if (data->key == 46)
+		data->m = 1;
+	if (data->key == 45)
+		data->m = 0;
 	move_norm(data->key, data);
 	return (0);
 }
@@ -82,5 +86,9 @@ int	move2(int key, t_cub3d *data)
 		data->key_a = 1;
 	if (key == 2 || key == 124)
 		data->key_d = 1;
+	if (data->key == 49)
+		data->key_b = 1;
+	if (data->key == 19)
+		data->key_r = 1;
 	return (1);
 }

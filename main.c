@@ -34,22 +34,12 @@ void	get_map_size(t_cub3d *data, t_img *map)
 	i = 0;
 	while (map->map[i])
 	{
-		if (map->map[i] == '1')
-		{
+		if (map->map[i] != '\n' && data->blen == 0)
 			data->alen += 4;
-		}
-		else if (map->map[i] == '\n')
-		{
-			if (data->alen > max)
-				max = data->alen;
-			data->alen = 0;
-			data->blen += 6;
-		}
-		else if (map->map[i] == '0')
-			data->alen += 4;
+		if (map->map[i] == '\n')
+			data->blen += 4;
 		i++;
 	}
-	data->alen = max;
 }
 
 void	set_values(t_cub3d *data, t_img *map)
@@ -63,10 +53,10 @@ void	set_values(t_cub3d *data, t_img *map)
 		data->rx = -1;
 	data->viewx = 0;
 	data->viewy = 0.66;
-	data->move_speed = 0.09;
-	data->rotate_speed = 0.03;
-	data->witdh = 2000;
-	data->height = 1300;
+	data->move_speed = 0.12;
+	data->rotate_speed = 0.032;
+	data->witdh = 1920;
+	data->height = 1080;
 	data->img_width = 64;
 	data->img_height = 64;
 	map->next_idx = 0;
@@ -89,6 +79,7 @@ int	main(int argc, char **argv)
 	{
 		cub3d = ft_calloc(sizeof(t_cub3d), 1);
 		cub3d->img_s = ft_calloc(sizeof(t_img), 1);
+		cub3d->map_name = argv[1];
 		if (!parsemap(cub3d, argv) || !setupgame(cub3d))
 		{
 			printf("Error\n");
