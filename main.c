@@ -28,9 +28,7 @@ int	cubcheck(char *s)
 void	get_map_size(t_cub3d *data, t_img *map)
 {
 	int	i;
-	int	max;
 
-	max = 60;
 	i = 0;
 	while (map->map[i])
 	{
@@ -47,13 +45,24 @@ void	set_values(t_cub3d *data, t_img *map)
 	if (data->orientation == 'S')
 	{
 		data->rx = 1;
-		data->ry = 0;
+		data->viewy = 0.66;
 	}
-	else
+	else if (data->orientation == 'N')
+	{
 		data->rx = -1;
-	data->viewx = 0;
-	data->viewy = 0.66;
-	data->move_speed = 0.12;
+		data->viewy = -0.66;
+	}
+	else if (data->orientation == 'W')
+	{
+		data->ry  = 1;
+		data->viewx = -0.66;
+	}
+	else if (data->orientation == 'E')
+	{
+		data->ry  = -1;
+		data->viewx = 0.66;
+	}
+	data->move_speed = 0.13;
 	data->rotate_speed = 0.032;
 	data->witdh = 1920;
 	data->height = 1080;

@@ -6,7 +6,7 @@
 /*   By: scoskun <scoskun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 16:56:46 by scoskun           #+#    #+#             */
-/*   Updated: 2022/09/30 17:51:32 by scoskun          ###   ########.fr       */
+/*   Updated: 2022/10/03 13:32:35 by scoskun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,27 +65,28 @@ int	mini_map(int key, t_cub3d *data)
 			if (data->img_s->map[x] == '1')
 			{
 				j = 0;
-				while (j < 5)
+				while (j < 4 * data->alen)
 				{
-					if (l < data->alen * data->blen)
-						dat[i + k] = 0xFE0021;
+					if (l + k + i < data->alen * data->blen)
+						dat[l + i + k] = 0xFE0021;
 					k++;
-					if (k == 5)
+					if (k == 4)
 					{
 						k = 0;
-						l += data->alen;
 						j += 1;
+						l += data->alen;
 					}
 				}
 				l = 0;
+				i += 4;
 			}
-			if (data->img_s->map[x] == '0')
-				i += 10;
+			else
+				i += 4;
 			if (i >= data->alen || data->img_s->map[x] == '\n')
 			{
-				l += data->alen * 5;
+				l += (data->alen * 4);
 			}
-			i += 10;
+			i += 4;
 			x++;
 		}
 		mlx_put_image_to_window(data->mlx, data->win, mmap, 0,0);

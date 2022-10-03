@@ -6,7 +6,7 @@
 /*   By: scoskun <scoskun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 16:49:34 by scoskun           #+#    #+#             */
-/*   Updated: 2022/09/30 18:07:07 by scoskun          ###   ########.fr       */
+/*   Updated: 2022/10/03 16:00:19 by scoskun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,20 +43,10 @@ void	move_right(t_cub3d *data)
 int	move_norm(int key, t_cub3d *data)
 {
 	move_forward_backward(key, data);
-	if (data->orientation == 'S')
-	{
-		if (data->key_a)
-			move_left(data);
-		else if (data->key_d)
-			move_right(data);
-	}
-	if (data->orientation == 'N')
-	{
-		if (data->key_a)
-			move_right(data);
-		else if (data->key_d)
-			move_left(data);
-	}
+	if (data->key_a)
+		move_left(data);
+	else if (data->key_d)
+		move_right(data);
 	return (0);
 }
 

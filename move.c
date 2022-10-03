@@ -6,23 +6,38 @@
 /*   By: scoskun <scoskun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 15:11:17 by scoskun           #+#    #+#             */
-/*   Updated: 2022/09/30 18:07:10 by scoskun          ###   ########.fr       */
+/*   Updated: 2022/10/03 12:45:41 by scoskun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	getx(char *map, char a)
+void	put_guns(t_cub3d *data)
 {
-	int	i;
-
-	i = -1;
-	while(map[++i])
+	if (data->key_r)
 	{
-		if (map[i] == a)
-			return (i);
+		if (!data->key_b)
+		{
+			mlx_put_image_to_window(data->mlx, data->win, data->aim2, 1030, 600);
+			mlx_put_image_to_window(data->mlx, data->win, data->grana, 50, 200);
+		}
+		else
+		{
+			mlx_put_image_to_window(data->mlx, data->win, data->grana, 1090, 600);
+			mlx_put_image_to_window(data->mlx, data->win, data->aim2, 50, 400);
+		}	
 	}
-	return (0);
+	else
+		if (!data->key_b)
+		{
+			mlx_put_image_to_window(data->mlx, data->win, data->aim, 300, 500);
+			mlx_put_image_to_window(data->mlx, data->win, data->aim2, 950, 600);
+		}
+		else
+		{
+			mlx_put_image_to_window(data->mlx, data->win, data->aim, 300, 450);
+			mlx_put_image_to_window(data->mlx, data->win, data->aim2, 950, 500);
+		}
 }
 
 void	move_forward_backward(int key, t_cub3d *data)

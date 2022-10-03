@@ -28,7 +28,7 @@ $(NAME): $(OBJS) $(MINI) $(LIBFT)
 
 %.o: %.c
 	@echo $(R)Complining: [$<]
-	@${CC} -c $^ -o $@ -Wall -Werror -Wextra -g
+	@${CC} -c $< -o $@ -Wall -Werror -Wextra -g
 
 clean:
 	@rm -rf ${OBJS}

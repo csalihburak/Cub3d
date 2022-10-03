@@ -6,7 +6,7 @@
 /*   By: scoskun <scoskun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 19:19:19 by agunes            #+#    #+#             */
-/*   Updated: 2022/09/21 17:56:14 by scoskun          ###   ########.fr       */
+/*   Updated: 2022/10/03 15:54:53 by scoskun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	get_pos(t_cub3d *data)
 		y = -1;
 		while (data->img_s->cub[x][++y])
 		{
-			if (data->img_s->cub[x][y] == 'E' || data->img_s->cub[x][y] == 'w' \
+			if (data->img_s->cub[x][y] == 'E' || data->img_s->cub[x][y] == 'W' \
 			|| data->img_s->cub[x][y] == 'S' || data->img_s->cub[x][y] == 'N')
 			{
 				data->px = x;

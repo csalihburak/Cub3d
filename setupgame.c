@@ -6,7 +6,7 @@
 /*   By: scoskun <scoskun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 21:25:53 by agunes            #+#    #+#             */
-/*   Updated: 2022/09/30 18:04:55 by scoskun          ###   ########.fr       */
+/*   Updated: 2022/10/03 12:32:38 by scoskun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	mlx_start(t_cub3d *cub3d)
 {
 	cub3d->mlx = mlx_init();
 	cub3d->win = mlx_new_window(cub3d->mlx, \
-	cub3d->witdh, cub3d->height, "BOMBOM!");
+	cub3d->witdh, cub3d->height, "CS:GO");
 	if (!preimg(cub3d) || !checkimg(cub3d) || !checkgamemap(cub3d))
 		return (0);
 	cub3d->screen_img = mlx_new_image(cub3d->mlx, cub3d->witdh, cub3d->height);
