@@ -6,7 +6,7 @@
 /*   By: scoskun <scoskun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 17:23:47 by agunes            #+#    #+#             */
-/*   Updated: 2022/10/03 16:11:04 by scoskun          ###   ########.fr       */
+/*   Updated: 2022/10/03 18:56:39 by scoskun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,10 +129,13 @@ int		main_loop(t_cub3d *data);
 int		move(int key, t_cub3d *data);
 int		aim(int key, t_cub3d *data);
 int		move2(int key, t_cub3d *data);
-int		move_norm(int key, t_cub3d *data);
+int		move_norm(t_cub3d *data);
 int		checkgamemap(t_cub3d *cub3d);
 int		checkimg(t_cub3d *cub3d);
-int		mini_map(int key, t_cub3d *data);
+int		mini_map(t_cub3d *data);
+int		ft_strcmp(char *s1, char *s2);
+int		cubcheck(char *s);
+int		get_pos2(t_cub3d *data);
 void	jumpspace(t_cub3d *cub3d);
 void	freeprefc(t_cub3d *cub3d, char **buff, int i);
 void	draw_image(t_cub3d*data, t_img *map, int i);
@@ -142,6 +145,6 @@ void	print_ground(t_cub3d *data);
 void	get_pos(t_cub3d *data);
 void	set_values(t_cub3d *data);
 void	get_map_size(t_cub3d *data, t_img *map);
-void	move_forward_backward(int key, t_cub3d *data);
+void	move_forward_backward(t_cub3d *data, t_img *map);
 void	put_guns(t_cub3d *data);
 #endif

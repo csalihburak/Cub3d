@@ -7,6 +7,7 @@ SRCS = main.c \
 		preimg2.c	\
 		preimg3.c	\
 		utils.c		\
+		utils2.c	\
 		create_map.c	\
 		draw_image.c	\
 		move.c			\

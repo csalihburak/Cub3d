@@ -6,7 +6,7 @@
 /*   By: scoskun <scoskun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 16:56:46 by scoskun           #+#    #+#             */
-/*   Updated: 2022/10/03 13:32:35 by scoskun          ###   ########.fr       */
+/*   Updated: 2022/10/03 18:59:30 by scoskun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,14 @@ void	norm_mini_map(t_cub3d *data, int px, int py, int i)
 	{
 		if (data->img_s->map[i] == '1')
 		{
-			mlx_pixel_put(data->mlx, data->win, px, py, 0xFE0021);
-			mlx_pixel_put(data->mlx, data->win, px + 1, py, 0xFE0021);
-			mlx_pixel_put(data->mlx, data->win, px, py, 0xFE0021);
+			data->new_da[px + py] = 0xF39C12;
 			px += 4;
 		}
 		else if (data->img_s->map[i] == '\n')
-		{
-			px = 0;
-			py += 6;
-		}
+			py += data->alen * 4;
 		else if (data->img_s->map[i] == data->orientation)
 		{
-			mlx_pixel_put(data->mlx, data->win, data->px, \
-			data->py, 0xFE324);
+			data->new_da[px + py] = 0x20A9A9;
 			px += 4;
 		}
 		else if (data->img_s->map[i] == '0')
@@ -39,58 +33,14 @@ void	norm_mini_map(t_cub3d *data, int px, int py, int i)
 	}
 }
 
-int	mini_map(int key, t_cub3d *data)
+int	mini_map(t_cub3d *data)
 {
-	key = 0;
 	if (data->m)
 	{
-		void	*mmap;
-		int		*dat;
-		int		i;
-		int		j;
-		int		k; // x
-		int		l; // y
-		int		x;
-
-		i = 0;
-		j = 0;
-		k = 0;
-		l = 0;
-		x = 0;
-		mmap = mlx_new_image(data->mlx, data->alen, data->blen);
-		dat = (int *)mlx_get_data_addr(mmap, &data->bit_per_px, \
+		data->new = mlx_new_image(data->mlx, data->alen, data->blen);
+		data->new_da = (int *)mlx_get_data_addr(data->new, &data->bit_per_px, \
 		&data->size_line, &data->endian);
- 		while (i < (data->alen * data->blen) && data->img_s->map[x])
-		{
-			if (data->img_s->map[x] == '1')
-			{
-				j = 0;
-				while (j < 4 * data->alen)
-				{
-					if (l + k + i < data->alen * data->blen)
-						dat[l + i + k] = 0xFE0021;
-					k++;
-					if (k == 4)
-					{
-						k = 0;
-						j += 1;
-						l += data->alen;
-					}
-				}
-				l = 0;
-				i += 4;
-			}
-			else
-				i += 4;
-			if (i >= data->alen || data->img_s->map[x] == '\n')
-			{
-				l += (data->alen * 4);
-			}
-			i += 4;
-			x++;
-		}
-		mlx_put_image_to_window(data->mlx, data->win, mmap, 0,0);
-		//norm_mini_map(data, 0, 0, -1);
+		norm_mini_map(data, 0, 0, -1);
 	}
 	return (1);
 }
@@ -149,7 +99,7 @@ void	draw_image(t_cub3d *data, t_img *map, int i)
 			map->colour = map->ea_data[data->img_height * map->my + map->mx];
 		else
 			map->colour = map->we_data[data->img_height * map->my + map->mx];
-		if(map->side == 1) 
+		if (map->side == 1)
 			map->colour = (map->colour >> 1) & 8355711;
 		data->screen_img_data[a * data->witdh + i] = map->colour;
 		a++;

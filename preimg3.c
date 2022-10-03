@@ -6,7 +6,7 @@
 /*   By: scoskun <scoskun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 17:35:31 by agunes            #+#    #+#             */
-/*   Updated: 2022/09/23 18:00:02 by scoskun          ###   ########.fr       */
+/*   Updated: 2022/10/03 18:18:47 by scoskun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	hexcolor(int r, int g, int b)
 {
-	return ((r * 65536) + (256 * g) + b);
+	return ((r << 16) + (g << 8) + b);
 }
 
 void	freeprefc(t_cub3d *cub3d, char **buff, int i)
@@ -28,9 +28,11 @@ void	freeprefc(t_cub3d *cub3d, char **buff, int i)
 	g = ft_atoi(ft_strchr(cub3d->img_s->cub[i], ','));
 	b = ft_atoi(ft_strrchr(cub3d->img_s->cub[i], ',') + 1);
 	if (cub3d->img_s->cub[i][0] == 'F')
-		cub3d->img_s->floor = hexcolor(r, g, b);
+		cub3d->img_s->floor = mlx_get_color_value(cub3d->mlx, \
+		hexcolor(r, g, b));
 	else
-		cub3d->img_s->ceilling = hexcolor(r, g, b);
+		cub3d->img_s->ceilling = mlx_get_color_value(cub3d->mlx, \
+		hexcolor(r, g, b));
 }
 
 int	lenmap(char *s)

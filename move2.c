@@ -6,7 +6,7 @@
 /*   By: scoskun <scoskun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 16:49:34 by scoskun           #+#    #+#             */
-/*   Updated: 2022/10/03 16:00:19 by scoskun          ###   ########.fr       */
+/*   Updated: 2022/10/03 18:13:38 by scoskun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ void	move_right(t_cub3d *data)
 	data->viewy * cos(data->rotate_speed);
 }
 
-int	move_norm(int key, t_cub3d *data)
+int	move_norm(t_cub3d *data)
 {
-	move_forward_backward(key, data);
+	move_forward_backward(data, data->img_s);
 	if (data->key_a)
 		move_left(data);
 	else if (data->key_d)
@@ -60,7 +60,7 @@ int	main_loop(t_cub3d *data)
 		data->m = 1;
 	if (data->key == 45)
 		data->m = 0;
-	move_norm(data->key, data);
+	move_norm(data);
 	return (0);
 }
 

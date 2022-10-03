@@ -6,11 +6,25 @@
 /*   By: scoskun <scoskun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 15:11:17 by scoskun           #+#    #+#             */
-/*   Updated: 2022/10/03 12:45:41 by scoskun          ###   ########.fr       */
+/*   Updated: 2022/10/03 19:01:18 by scoskun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	put_guns2(t_cub3d *data)
+{
+	if (!data->key_b)
+	{
+		mlx_put_image_to_window(data->mlx, data->win, data->aim, 300, 500);
+		mlx_put_image_to_window(data->mlx, data->win, data->aim2, 950, 600);
+	}
+	else
+	{
+		mlx_put_image_to_window(data->mlx, data->win, data->aim, 300, 450);
+		mlx_put_image_to_window(data->mlx, data->win, data->aim2, 950, 500);
+	}
+}
 
 void	put_guns(t_cub3d *data)
 {
@@ -18,50 +32,43 @@ void	put_guns(t_cub3d *data)
 	{
 		if (!data->key_b)
 		{
-			mlx_put_image_to_window(data->mlx, data->win, data->aim2, 1030, 600);
+			mlx_put_image_to_window(data->mlx, data->win, \
+			data->aim2, 1030, 600);
 			mlx_put_image_to_window(data->mlx, data->win, data->grana, 50, 200);
 		}
 		else
 		{
-			mlx_put_image_to_window(data->mlx, data->win, data->grana, 1090, 600);
+			mlx_put_image_to_window(data->mlx, data->win, \
+			data->grana, 1090, 600);
 			mlx_put_image_to_window(data->mlx, data->win, data->aim2, 50, 400);
 		}	
 	}
 	else
-		if (!data->key_b)
-		{
-			mlx_put_image_to_window(data->mlx, data->win, data->aim, 300, 500);
-			mlx_put_image_to_window(data->mlx, data->win, data->aim2, 950, 600);
-		}
-		else
-		{
-			mlx_put_image_to_window(data->mlx, data->win, data->aim, 300, 450);
-			mlx_put_image_to_window(data->mlx, data->win, data->aim2, 950, 500);
-		}
+		put_guns2(data);
 }
 
-void	move_forward_backward(int key, t_cub3d *data)
+void	move_forward_backward(t_cub3d *data, t_img *map)
 {
-	key = 0;
 	if (data->key_w)
 	{
-		if (data->img_s->cub[(int)(data->px + data->rx * data->move_speed)][(int)data->py] == '0' || data->img_s->cub[(int)(data->px + data->rx * \
+		if (map->cub[(int)(data->px + data->rx * data->move_speed)] \
+		[(int)data->py] == '0' || map->cub[(int)(data->px + data->rx * \
 		data->move_speed)][(int)data->py] == data->orientation)
 			data->px += data->rx * data->move_speed;
-		if (data->img_s->cub[(int)data->px][(int)(data->py + \
-		data->ry * data->move_speed)] == '0' || data->img_s->cub[(int)data->px][(int)(data->py + \
-		data->ry * data->move_speed)] == data->orientation)
+		if (map->cub[(int)data->px][(int)(data->py + \
+		data->ry * data->move_speed)] == '0' || map->cub[(int)data->px] \
+		[(int)(data->py + data->ry * data->move_speed)] == data->orientation)
 			data->py += data->ry * data->move_speed;
 	}
 	else if (data->key_s)
 	{
-		if (data->img_s->cub[(int)(data->px - data->rx * \
-		data->move_speed)][(int)data->py] == '0' || data->img_s->cub[(int)(data->px - data->rx * \
+		if (map->cub[(int)(data->px - data->rx * data->move_speed)] \
+		[(int)data->py] == '0' || map->cub[(int)(data->px - data->rx * \
 		data->move_speed)][(int)data->py] == data->orientation)
 			data->px -= data->rx * data->move_speed;
-		if (data->img_s->cub[(int)data->px][(int)(data->py - data->ry * \
-		data->move_speed)] == '0' || data->img_s->cub[(int)data->px][(int)(data->py - data->ry * \
-		data->move_speed)] == data->orientation)
+		if (map->cub[(int)data->px][(int)(data->py - data->ry * \
+		data->move_speed)] == '0' || map->cub[(int)data->px] \
+		[(int)(data->py - data->ry * data->move_speed)] == data->orientation)
 			data->py -= data->ry * data->move_speed;
 	}
 }
@@ -80,7 +87,11 @@ int	move(int key, t_cub3d *data)
 	if (key == 2 || key == 124)
 		data->key_d = 0;
 	if (data->key == 46)
+	{
+		mlx_put_image_to_window(data->mlx, data->win, \
+		data->new, 0, 0);
 		data->m = 0;
+	}
 	if (data->key == 49)
 		data->key_b = 0;
 	if (data->key == 19)

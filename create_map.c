@@ -6,7 +6,7 @@
 /*   By: scoskun <scoskun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 14:47:59 by scoskun           #+#    #+#             */
-/*   Updated: 2022/10/03 14:33:47 by scoskun          ###   ########.fr       */
+/*   Updated: 2022/10/03 18:22:35 by scoskun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,6 @@ void	hitcheck(t_img *map)
 			map->mapy += map->step_y;
 			map->side = 1;
 		}
-/* 		if (map->mapx < 0)
-			map->mapx = 0;
-		if (map->mapy < 0)
-			map->mapy = 0; */
 		if (map->cub[map->mapx][map->mapy] == '1')
 			map->hit = 1;
 	}
@@ -123,6 +119,5 @@ void	print_img(t_cub3d *data, t_img *map)
 	}
 	mlx_put_image_to_window(data->mlx, data->win, data->screen_img, 0, 0);
 	put_guns(data);
-
-	mini_map(data->key, data);
+	mini_map(data);
 }
