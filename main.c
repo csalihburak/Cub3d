@@ -40,7 +40,7 @@ void	get_map_size(t_cub3d *data, t_img *map)
 	}
 }
 
-void	set_values(t_cub3d *data, t_img *map)
+void	set_values(t_cub3d *data)
 {
 	if (data->orientation == 'S')
 	{
@@ -54,12 +54,12 @@ void	set_values(t_cub3d *data, t_img *map)
 	}
 	else if (data->orientation == 'W')
 	{
-		data->ry  = 1;
+		data->ry = 1;
 		data->viewx = -0.66;
 	}
 	else if (data->orientation == 'E')
 	{
-		data->ry  = -1;
+		data->ry = -1;
 		data->viewx = 0.66;
 	}
 	data->move_speed = 0.13;
@@ -68,13 +68,18 @@ void	set_values(t_cub3d *data, t_img *map)
 	data->height = 1080;
 	data->img_width = 64;
 	data->img_height = 64;
-	map->next_idx = 0;
 }
 
 int	setupgame(t_cub3d *cub3d)
 {
+	cub3d->move_speed = 0.13;
+	cub3d->rotate_speed = 0.032;
+	cub3d->witdh = 1920;
+	cub3d->height = 1080;
+	cub3d->img_width = 64;
+	cub3d->img_height = 64;
 	get_map_size(cub3d, cub3d->img_s);
-	set_values(cub3d, cub3d->img_s);
+	set_values(cub3d);
 	if (!mlx_start(cub3d))
 		return (0);
 	return (1);

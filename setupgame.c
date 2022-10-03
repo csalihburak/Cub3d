@@ -6,7 +6,7 @@
 /*   By: scoskun <scoskun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 21:25:53 by agunes            #+#    #+#             */
-/*   Updated: 2022/10/03 12:32:38 by scoskun          ###   ########.fr       */
+/*   Updated: 2022/10/03 16:11:11 by scoskun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int	mlx_start(t_cub3d *cub3d)
 	&cub3d->img_width, &cub3d->img_height);
 	cub3d->img_s->cub = ft_split(cub3d->img_s->map, '\n');
 	get_pos(cub3d);
-	set_values(cub3d, cub3d->img_s);
+	set_values(cub3d);
 	mlx_hook(cub3d->win, 17, 0, xbutton, cub3d);
 	mlx_loop_hook(cub3d->mlx, main_loop, cub3d);
 	mlx_hook(cub3d->win, 3, 0, move, cub3d);

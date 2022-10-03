@@ -6,7 +6,7 @@
 /*   By: scoskun <scoskun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 17:23:47 by agunes            #+#    #+#             */
-/*   Updated: 2022/10/03 12:43:00 by scoskun          ###   ########.fr       */
+/*   Updated: 2022/10/03 16:11:04 by scoskun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ void	print_img(t_cub3d *data, t_img *map);
 void	print_roof(t_cub3d *data);
 void	print_ground(t_cub3d *data);
 void	get_pos(t_cub3d *data);
-void	set_values(t_cub3d *data, t_img *map);
+void	set_values(t_cub3d *data);
 void	get_map_size(t_cub3d *data, t_img *map);
 void	move_forward_backward(int key, t_cub3d *data);
 void	put_guns(t_cub3d *data);
