@@ -6,7 +6,7 @@
 /*   By: scoskun <scoskun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 16:56:46 by scoskun           #+#    #+#             */
-/*   Updated: 2022/10/03 18:59:30 by scoskun          ###   ########.fr       */
+/*   Updated: 2022/10/04 15:35:50 by scoskun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,24 @@
 
 void	norm_mini_map(t_cub3d *data, int px, int py, int i)
 {
-	while (data->img_s->map[++i])
+	int	j;
+
+	j = -1;
+	while (data->img_s->cub[++j])
 	{
-		if (data->img_s->map[i] == '1')
+		i = -1;
+		while (data->img_s->cub[j][++i])
 		{
-			data->new_da[px + py] = 0xF39C12;
+			if (data->img_s->cub[j][i] == '1')
+				put_ch(data, px, py, 0);
+			else if (data->img_s->cub[j][i] == data->orientation)
+				put_ch(data, px, py, 1);
+			else if (data->img_s->cub[j][i] == '0')
+				put_ch(data, px, py, 2);
+			if (data->img_s->cub[j][i + 1] == '\0')
+				py += data->alen * 4;
 			px += 4;
 		}
-		else if (data->img_s->map[i] == '\n')
-			py += data->alen * 4;
-		else if (data->img_s->map[i] == data->orientation)
-		{
-			data->new_da[px + py] = 0x20A9A9;
-			px += 4;
-		}
-		else if (data->img_s->map[i] == '0')
-			px += 4;
 	}
 }
 
@@ -37,10 +39,8 @@ int	mini_map(t_cub3d *data)
 {
 	if (data->m)
 	{
-		data->new = mlx_new_image(data->mlx, data->alen, data->blen);
-		data->new_da = (int *)mlx_get_data_addr(data->new, &data->bit_per_px, \
-		&data->size_line, &data->endian);
-		norm_mini_map(data, 0, 0, -1);
+		mlx_put_image_to_window(data->mlx, data->win, \
+		data->new, 0, 0);
 	}
 	return (1);
 }

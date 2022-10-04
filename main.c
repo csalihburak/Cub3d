@@ -40,7 +40,7 @@ void	set_values(t_cub3d *data)
 {
 	set_orientation(data);
 	data->move_speed = 0.13;
-	data->rotate_speed = 0.032;
+	data->rotate_speed = 0.06;
 	data->witdh = 1920;
 	data->height = 1080;
 	data->img_width = 64;
@@ -51,7 +51,6 @@ int	setupgame(t_cub3d *cub3d)
 {
 	get_map_size(cub3d, cub3d->img_s);
 	set_values(cub3d);
-	mini_map(cub3d);
 	if (!mlx_start(cub3d))
 		return (0);
 	return (1);
@@ -63,18 +62,21 @@ int	main(int argc, char **argv)
 
 	if (argc == 2 && cubcheck(argv[1]))
 	{
-		cub3d = ft_calloc(sizeof(t_cub3d), 1);
-		cub3d->img_s = ft_calloc(sizeof(t_img), 1);
+		cub3d = ft_calloc(sizeof(t_cub3d), 2);
+		cub3d->img_s = ft_calloc(sizeof(t_img), 2);
 		cub3d->map_name = argv[1];
-		if (!parsemap(cub3d, argv) || !setupgame(cub3d))
-		{
-			printf("Error\n");
-			return (0);
-		}
+		if (!parsemap(cub3d, argv))
+			ft_error(cub3d, 2);
+		else if (!setupgame(cub3d))
+			ft_error(cub3d, 3);
 	}
 	else
 	{
-		printf("Error\n");
+		cub3d = NULL;
+		if (argc == 2)
+			ft_error(cub3d, 1);
+		else
+			ft_error(cub3d, 0);
 		return (0);
 	}
 	return (1);

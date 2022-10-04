@@ -6,7 +6,7 @@
 /*   By: scoskun <scoskun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 17:23:47 by agunes            #+#    #+#             */
-/*   Updated: 2022/10/03 18:56:39 by scoskun          ###   ########.fr       */
+/*   Updated: 2022/10/04 15:07:44 by scoskun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ typedef struct s_cub3d
 	int				m;
 	int				flag1;
 	char			*map_name;
+	char			**paths;
 	char			orientation;
 	struct s_img	*img_s;
 }	t_cub3d;
@@ -145,6 +146,11 @@ void	print_ground(t_cub3d *data);
 void	get_pos(t_cub3d *data);
 void	set_values(t_cub3d *data);
 void	get_map_size(t_cub3d *data, t_img *map);
-void	move_forward_backward(t_cub3d *data, t_img *map);
+void	move_forward(t_cub3d *data, t_img *map);
 void	put_guns(t_cub3d *data);
+void	norm_mini_map(t_cub3d *data, int px, int py, int i);
+void	ft_error(t_cub3d *data, int msg);
+void	get_path(t_cub3d *data, int i, int j);
+void	mimap(t_cub3d *data);
+void	put_ch(t_cub3d *data, int px, int py, int flag);
 #endif

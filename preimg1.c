@@ -6,7 +6,7 @@
 /*   By: scoskun <scoskun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 15:38:26 by agunes            #+#    #+#             */
-/*   Updated: 2022/10/03 17:10:17 by scoskun          ###   ########.fr       */
+/*   Updated: 2022/10/04 11:31:42 by scoskun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,11 +99,10 @@ int	parsemap(t_cub3d *cub3d, char **argv)
 	if (fd < 0)
 		return (0);
 	while (read(fd, buff, 1))
-	{
 		temp = ft_strjoin(temp, buff);
-		buff[1] = '\0';
-	}
 	cub3d->img_s->cub = ft_split(temp, '\n');
+	if (!cub3d->img_s->cub)
+		return (0);
 	if (!checkcub(cub3d) || !premap(cub3d) || !checkmap(cub3d))
 	{
 		free(buff);

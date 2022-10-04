@@ -6,7 +6,7 @@
 /*   By: scoskun <scoskun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 21:25:53 by agunes            #+#    #+#             */
-/*   Updated: 2022/10/03 17:43:24 by scoskun          ###   ########.fr       */
+/*   Updated: 2022/10/04 14:03:03 by scoskun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,18 +88,13 @@ int	mlx_start(t_cub3d *cub3d)
 	cub3d->witdh, cub3d->height, "CS:GO");
 	if (!preimg(cub3d) || !checkimg(cub3d) || !checkgamemap(cub3d))
 		return (0);
+	mimap(cub3d);
 	cub3d->screen_img = mlx_new_image(cub3d->mlx, cub3d->witdh, cub3d->height);
 	cub3d->screen_img_data = (int *)mlx_get_data_addr(cub3d->screen_img, \
 	&cub3d->bit_per_px, &cub3d->size_line, &cub3d->endian);
-	cub3d->aim = mlx_xpm_file_to_image(cub3d->mlx, "./textures/gun.xpm", \
-	&cub3d->img_width, &cub3d->img_height);
-	cub3d->aim2 = mlx_xpm_file_to_image(cub3d->mlx, "./textures/aim.xpm", \
-	&cub3d->img_width, &cub3d->img_height);
-	dbfree(cub3d->img_s->cub);
-	cub3d->grana = mlx_xpm_file_to_image(cub3d->mlx, "./textures/chc.xpm", \
-	&cub3d->img_width, &cub3d->img_height);
 	cub3d->img_s->cub = ft_split(cub3d->img_s->map, '\n');
 	get_pos(cub3d);
+	norm_mini_map(cub3d, 0, 0, -1);
 	set_values(cub3d);
 	mlx_hook(cub3d->win, 17, 0, xbutton, cub3d);
 	mlx_loop_hook(cub3d->mlx, main_loop, cub3d);

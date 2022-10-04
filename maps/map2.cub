@@ -1,10 +1,10 @@
+F 84,153,199
+C 255,1,255
 NO ./textures/no.xpm
-SO ./textures/so.xpm
+SO ./textures/redbrick.xpm
 WE ./textures/we.xpm
 EA ./textures/ea.xpm
 
-F 84,153,199
-C 255,1,255
 
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
 1 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1

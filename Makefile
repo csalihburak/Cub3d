@@ -12,6 +12,7 @@ SRCS = main.c \
 		draw_image.c	\
 		move.c			\
 		move2.c			\
+		error.c			\
 
 OBJS= $(SRCS:.c=.o)
 MINI = ./mlx/libmlx.a
@@ -34,11 +35,11 @@ $(NAME): $(OBJS) $(MINI) $(LIBFT)
 clean:
 	@rm -rf ${OBJS}
 	@echo $(R)Removed [$(OBJS)]$(B)
-	@make fclean -C libft/
-	@rm -rf cub3d
+	@make clean -C libft/
 
 fclean: clean
-	@make clean -C mlx/
+	@rm -rf cub3d
+	@make fclean -C libft/
 
 re: fclean all
 

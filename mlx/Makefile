@@ -17,10 +17,10 @@ CUT = "\033[K"
 # changed the following 8 lines to silence all the warnings created
 %.o : %.c
 	@echo $(B)Compiling [$<]...$(X)
-	@cc -O2 -w -DSTRINGPUTX11   -c -o $@ $<
+	@cc -O2 -w -DSTRINGPUTX11   -c -o $@ $< -g
 %.o : %.m
 	@echo $(B)Compiling [$<]...$(X)
-	@cc -O2 -w -DSTRINGPUTX11   -c -o $@ $<
+	@cc -O2 -w -DSTRINGPUTX11   -c -o $@ $< -g
 
 # add to match string put with X11 in size and position
 CFLAGS+= -DSTRINGPUTX11
