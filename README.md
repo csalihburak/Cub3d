@@ -7,7 +7,7 @@ This is a raycasting project built in C using the Minilibx library. It renders a
 <img src="https://github.com/csalihburak/Cub3d/blob/master/images/image3.png" />
 
 
-## installation
+## Installation
 ```
 # clone this repository
 $ git clone https://github.com/csalihburak/Cub3d
@@ -19,17 +19,17 @@ $ make
 $ ./cub3D <map>
 ```
 ## How to Play
-Use the WASD keys to move around
-The arrow keys control the direction you are facing
-Press M to see mini map
++ Use the WASD keys to move around
++ The arrow keys control the direction you are facing
++ Press M to see mini map
 ## Technologies Used
-C
-Minilibx for graphics
++ C
++ Minilibx for graphics
 ## Features
-Raycasting to render 3D environments
-Texture mapping
-Collision detection
-Dynamic lighting
++ Raycasting to render 3D environments
++ Texture mapping
++ Collision detection
++ Dynamic lighting
 
-## Contiributers
-[Ahmet Hakan Gunes](https://github.com/ahmethakangunes)
+## Contributors
++ [Ahmet Hakan Gunes](https://github.com/ahmethakangunes)
