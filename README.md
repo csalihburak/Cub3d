@@ -1,10 +1,12 @@
 # Raycasting Cub3D
 This is a raycasting project built in C using the Minilibx library. It renders a 3D environment similar to Wolfenstein 3D.
 
-<img src="https://github.com/csalihburak/Cub3d/blob/master/images/image.png" />
-<img src="https://github.com/csalihburak/Cub3d/blob/master/images/image1.png" />
-<img src="https://github.com/csalihburak/Cub3d/blob/master/images/image2.png" />
-<img src="https://github.com/csalihburak/Cub3d/blob/master/images/image3.png" />
+<div>
+  <img src="https://github.com/csalihburak/Cub3d/blob/master/images/image.png" />
+  <img src="https://github.com/csalihburak/Cub3d/blob/master/images/image1.png" />
+  <img src="https://github.com/csalihburak/Cub3d/blob/master/images/image2.png" />
+  <img src="https://github.com/csalihburak/Cub3d/blob/master/images/image3.png" />
+ </div>
 
 
 ## Installation
