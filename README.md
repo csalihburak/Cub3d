@@ -7,14 +7,21 @@ This is a raycasting project built in C using the Minilibx library. It renders a
 <img src="https://github.com/csalihburak/Cub3d/blob/master/images/image3.png" />
 
 
+## installation
+```
+# clone this repository
+$ git clone https://github.com/csalihburak/Cub3d
+
+# compile all the files
+$ make
+
+# run the program
+$ ./cub3D <map>
+```
 ## How to Play
 Use the WASD keys to move around
 The arrow keys control the direction you are facing
-Escape exits the game
-## Installation
-Clone this repo
-Run make to compile the code
-Run ./cub3D <map> to start the game
+Press M to see mini map
 ## Technologies Used
 C
 Minilibx for graphics
